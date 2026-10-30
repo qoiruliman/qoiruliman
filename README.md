@@ -1,6 +1,6 @@
 # Hi there, I'm Qoirul Iman Nurianto! 👋
 
-```js
+```json
 {
     "name": "Qoirul Iman Nurianto",
     "aliases": [
@@ -19,7 +19,7 @@
     },
     "contact": {
         "email": "qoirulimannurianto@email.com",
-        "web": "[https://qoirul.my.id](https://qoirul.my.id)"
+        "web": "https://qoirul.my.id"
     }
 }
 ```
