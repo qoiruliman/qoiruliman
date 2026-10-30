@@ -14,8 +14,8 @@
     "education": "SMKN 5 Batam",
     "bio": "tetap ngoding walau token habis",
     "social_media": {
-        "github": "[https://github.com/qoiruliman](https://github.com/qoiruliman)",
-        "instagram": "[https://instagram.com/qoirulimannurianto](https://instagram.com/qoirulimannurianto)"
+        "github": "https://github.com/qoiruliman",
+        "instagram": "https://instagram.com/qoirulimannurianto"
     },
     "contact": {
         "email": "qoirulimannurianto@email.com",
