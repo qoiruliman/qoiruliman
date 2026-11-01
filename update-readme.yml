@@ -1,0 +1,46 @@
+name: Update README from JSON
+
+on:
+  push:
+    paths:
+      - 'profile.json'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update README with JSON content
+        run: |
+          # Ambil isi dari profile.json, bungkus dengan markdown code block json
+          JSON_CONTENT=$(cat profile.json)
+          
+          # Buat blok markdown baru
+          NEW_CONTENT=$'```json\n'"$JSON_CONTENT"$'\n```'
+          
+          # Masukkan ke dalam README.md di antara tag marker
+          python3 -c '
+          import re
+          with open("README.md", "r") as f:
+              readme = f.read()
+          
+          with open("profile.json", "r") as f:
+              json_data = f.read().strip()
+
+          replacement = "<!-- JSON-START -->\n```json\n" + json_data + "\n```\n<!-- JSON-END -->"
+          
+          new_readme = re.sub(r"<!-- JSON-START -->.*?<!-- JSON-END -->", replacement, readme, flags=re.DOTALL)
+          
+          with open("README.md", "w") as f:
+              f.write(new_readme)
+          '
+
+      - name: Commit and push changes if README changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-update profile JSON in README"
+          file_pattern: README.md
